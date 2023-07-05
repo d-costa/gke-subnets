@@ -1,17 +1,16 @@
-// React component with two input values
-
-import { useState } from "react";
-import { Grid, Typography } from "@mui/material";
+import {
+  Grid,
+} from "@mui/material";
+import Form from "./Form";
+import MoreInfo from "./MoreInfo";
 
 function Body() {
-  const [something] = useState("Hello World!!");
 
   return (
-    <Grid container direction={"column"} className="main-paper">
-      <Grid item xs={12}>
-        <Typography>{something}</Typography>
+      <Grid container spacing={1} className="main-paper">
+        <Form/>
+        <MoreInfo/>
       </Grid>
-    </Grid>
   );
 }
 
