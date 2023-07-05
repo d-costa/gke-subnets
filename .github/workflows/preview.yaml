@@ -1,0 +1,48 @@
+name: preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'tsconfig.json'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency: pages-${{ github.ref }}
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-20.04
+
+    env:
+        PR_NUMBER: ${{ github.event.number }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set public url
+        run: echo "PUBLIC_URL=$(jq -r '.homepage + "/pr-preview/pr-" + env.PR_NUMBER' package.json)" >> $GITHUB_ENV
+      - name: Show url
+        run: echo $PUBLIC_URL
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./build/
+          preview-branch: gh-pages
