@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/create-react-app-template/static/css/main.b8ea19cf.css",
-    "main.js": "/create-react-app-template/static/js/main.41850fa1.js",
-    "static/js/496.a663ef87.chunk.js": "/create-react-app-template/static/js/496.a663ef87.chunk.js",
-    "index.html": "/create-react-app-template/index.html",
-    "main.b8ea19cf.css.map": "/create-react-app-template/static/css/main.b8ea19cf.css.map",
-    "main.41850fa1.js.map": "/create-react-app-template/static/js/main.41850fa1.js.map",
-    "496.a663ef87.chunk.js.map": "/create-react-app-template/static/js/496.a663ef87.chunk.js.map"
+    "main.css": "/gke-subnets/static/css/main.e08ffbab.css",
+    "main.js": "/gke-subnets/static/js/main.7fdf8b3d.js",
+    "static/js/496.72ccb6ba.chunk.js": "/gke-subnets/static/js/496.72ccb6ba.chunk.js",
+    "index.html": "/gke-subnets/index.html",
+    "main.e08ffbab.css.map": "/gke-subnets/static/css/main.e08ffbab.css.map",
+    "main.7fdf8b3d.js.map": "/gke-subnets/static/js/main.7fdf8b3d.js.map",
+    "496.72ccb6ba.chunk.js.map": "/gke-subnets/static/js/496.72ccb6ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b8ea19cf.css",
-    "static/js/main.41850fa1.js"
+    "static/css/main.e08ffbab.css",
+    "static/js/main.7fdf8b3d.js"
   ]
 }
