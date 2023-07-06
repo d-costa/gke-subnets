@@ -1,6 +1,6 @@
 {
-  "homepage": "https://d-costa.github.io/create-react-app-template",
-  "name": "react-template",
+  "homepage": "https://d-costa.github.io/gke-subnets",
+  "name": "gke-subnets",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
