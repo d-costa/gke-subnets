@@ -24,6 +24,34 @@ html {
   text-align: center;
 }
 
+.main-container {
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+  /* justify-items: center; */
+  padding: 1vh;
+  /* justify-content: center; */
+  /* align-content: center; */
+}
+
+.main-items {
+  text-align: left;
+}
+
 .footer {
   margin-top: 10vh;
+}
+
+.main-table {
+  max-width: 650px;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  margin-top: 2vh;
+}
+
+.main-info {
+  max-width: 650px;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  margin-top: 4vh;
 }

@@ -1,12 +1,15 @@
+import React from 'react';
 import './App.css';
 import Body from './components/Body';
+import { Typography } from '@mui/material';
 import Footer from './components/Footer';
-import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <header className="header">
+        <Typography variant="h4">GKE Subnet Calculator</Typography>
+      </header>
       <Body/>
       <Footer/>
     </div>
