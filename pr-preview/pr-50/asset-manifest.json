@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "https://d-costa.github.io/gke-subnets/pr-preview/pr-50/static/css/main.e08ffbab.css",
+    "main.js": "https://d-costa.github.io/gke-subnets/pr-preview/pr-50/static/js/main.07844267.js",
+    "static/js/496.72ccb6ba.chunk.js": "https://d-costa.github.io/gke-subnets/pr-preview/pr-50/static/js/496.72ccb6ba.chunk.js",
+    "index.html": "https://d-costa.github.io/gke-subnets/pr-preview/pr-50/index.html",
+    "main.e08ffbab.css.map": "https://d-costa.github.io/gke-subnets/pr-preview/pr-50/static/css/main.e08ffbab.css.map",
+    "main.07844267.js.map": "https://d-costa.github.io/gke-subnets/pr-preview/pr-50/static/js/main.07844267.js.map",
+    "496.72ccb6ba.chunk.js.map": "https://d-costa.github.io/gke-subnets/pr-preview/pr-50/static/js/496.72ccb6ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e08ffbab.css",
+    "static/js/main.07844267.js"
+  ]
+}
