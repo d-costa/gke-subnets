@@ -63,6 +63,7 @@ function Form() {
                 type="number"
                 onChange={(e) => setNodes(parseInt(e.target.value))}
                 value={nodes}
+                autoFocus={true}
               ></TextField>
             </TableCell>
             <TableCell align="left">
