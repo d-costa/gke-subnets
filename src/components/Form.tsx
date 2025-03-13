@@ -67,7 +67,7 @@ function Form() {
     const validValue = Math.min(Math.max(value, 0), nodes);
     setMaxSurge(validValue);
 
-    if (validValue == 0) {
+    if (validValue === 0) {
       setMaxUnavailable(Math.max(1, maxUnavailable));
     }
   }
@@ -77,7 +77,7 @@ function Form() {
 
     setMaxUnavailable(validValue);
 
-    if (validValue == 0) {
+    if (validValue === 0) {
       setMaxSurge(Math.max(1, maxSurge));
     }
   }
