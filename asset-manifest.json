@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/gke-subnets/static/css/main.e08ffbab.css",
-    "main.js": "/gke-subnets/static/js/main.eb0624c4.js",
+    "main.css": "/gke-subnets/static/css/main.f503aed5.css",
+    "main.js": "/gke-subnets/static/js/main.dd310587.js",
     "static/js/488.f82b2b4e.chunk.js": "/gke-subnets/static/js/488.f82b2b4e.chunk.js",
     "index.html": "/gke-subnets/index.html",
-    "main.e08ffbab.css.map": "/gke-subnets/static/css/main.e08ffbab.css.map",
-    "main.eb0624c4.js.map": "/gke-subnets/static/js/main.eb0624c4.js.map",
+    "main.f503aed5.css.map": "/gke-subnets/static/css/main.f503aed5.css.map",
+    "main.dd310587.js.map": "/gke-subnets/static/js/main.dd310587.js.map",
     "488.f82b2b4e.chunk.js.map": "/gke-subnets/static/js/488.f82b2b4e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e08ffbab.css",
-    "static/js/main.eb0624c4.js"
+    "static/css/main.f503aed5.css",
+    "static/js/main.dd310587.js"
   ]
 }
