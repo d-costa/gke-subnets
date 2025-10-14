@@ -1,16 +1,17 @@
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
+  Box,
   Typography,
   Button,
   Collapse,
   Tooltip,
   Checkbox,
+  FormControlLabel,
+  Stack,
+  Divider,
 } from "@mui/material";
+import { ExpandMore, ExpandLess } from "@mui/icons-material";
 
 function Form() {
   const [nodes, setNodes] = useState(3);
@@ -83,121 +84,154 @@ function Form() {
   }
 
   return (
-    <Table aria-label="simple table" className="main-table">
-      <TableBody className="main-container">
-        <TableRow>
-          <TableCell align="left">
-            <Typography>Nodes:</Typography>
-          </TableCell>
-          <TableCell align="left">
-            <TextField
-              size="small"
-              label="# nodes"
-              type="number"
-              onChange={(e) => handleSetNodes(parseInt(e.target.value))}
-              value={nodes}
-              autoFocus={true}
-            />
-          </TableCell>
-          <TableCell align="left">
-            <Typography>/{getNodeSubnetSize(nodes)}</Typography>
-          </TableCell>
-        </TableRow>
+    <Box sx={{ maxWidth: 650, margin: '0 auto', mt: 2 }}>
+      <Stack spacing={3}>
+        {/* Nodes */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
+            Nodes:
+          </Typography>
+          <TextField
+            size="small"
+            label="# nodes"
+            type="number"
+            onChange={(e) => handleSetNodes(parseInt(e.target.value))}
+            value={nodes}
+            autoFocus={true}
+            sx={{ flex: 1 }}
+          />
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              minWidth: 60, 
+              fontWeight: 600,
+              color: 'primary.main'
+            }}
+          >
+            /{getNodeSubnetSize(nodes)}
+          </Typography>
+        </Box>
 
-        <TableRow>
-          <TableCell align="left">
-            <Typography>Pods per Node:</Typography>
-          </TableCell>
-          <TableCell align="left">
-            <TextField
-              size="small"
-              label="# pods per node"
-              type="number"
-              onChange={(e) => setPodsPerNode(parseInt(e.target.value))}
-              value={podsPerNode}
-            />
-          </TableCell>
-          <TableCell align="left">
-            <Typography>/{getPodsSubnetSize(nodes, podsPerNode)}</Typography>
-          </TableCell>
-        </TableRow>
+        {/* Pods per Node */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
+            Pods per Node:
+          </Typography>
+          <TextField
+            size="small"
+            label="# pods per node"
+            type="number"
+            onChange={(e) => setPodsPerNode(parseInt(e.target.value))}
+            value={podsPerNode}
+            sx={{ flex: 1 }}
+          />
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              minWidth: 60, 
+              fontWeight: 600,
+              color: 'primary.main'
+            }}
+          >
+            /{getPodsSubnetSize(nodes, podsPerNode)}
+          </Typography>
+        </Box>
 
-        <TableRow>
-          <TableCell align="left">
-            <Typography>Services:</Typography>
-          </TableCell>
-          <TableCell align="left">
-            <TextField
-              size="small"
-              label="# services"
-              type="number"
-              onChange={(e) => setServices(parseInt(e.target.value))}
-              value={services}
-            />
-          </TableCell>
-          <TableCell align="left">
-            <Typography>/{getServicesSubnetSize(services)}</Typography>
-          </TableCell>
-        </TableRow>
+        {/* Services */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
+            Services:
+          </Typography>
+          <TextField
+            size="small"
+            label="# services"
+            type="number"
+            onChange={(e) => setServices(parseInt(e.target.value))}
+            value={services}
+            sx={{ flex: 1 }}
+          />
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              minWidth: 60, 
+              fontWeight: 600,
+              color: 'primary.main'
+            }}
+          >
+            /{getServicesSubnetSize(services)}
+          </Typography>
+        </Box>
 
-        <TableRow>
-          <TableCell colSpan={3} align="center">
-            <Button onClick={() => setShowAdvanced(!showAdvanced)}>
-              {showAdvanced ? "Hide Advanced" : "Show Advanced"}
-            </Button>
-          </TableCell>
-        </TableRow>
+        <Divider />
 
+        {/* Advanced Options Toggle */}
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Button 
+            onClick={() => setShowAdvanced(!showAdvanced)}
+            endIcon={showAdvanced ? <ExpandLess /> : <ExpandMore />}
+            variant="outlined"
+          >
+            {showAdvanced ? "Hide Advanced Options" : "Show Advanced Options"}
+          </Button>
+        </Box>
+
+        {/* Advanced Options */}
         <Collapse in={showAdvanced}>
-
-          <TableRow>
-            <TableCell align="left">
+          <Stack spacing={3} sx={{ pt: 2 }}>
+            <Divider />
+            
+            {/* Max Surge */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <Tooltip title="Additional node IPs will be required to scale up. Increasing unavailable will cancel some of these off">
-                <Typography>Max surge:</Typography>
+                <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
+                  Max surge:
+                </Typography>
               </Tooltip>
-            </TableCell>
-            <TableCell align="left">
               <TextField
                 size="small"
                 type="number"
                 onChange={(e) => handleMaxSurge(parseInt(e.target.value))}
                 value={maxSurge}
+                sx={{ flex: 1 }}
               />
-            </TableCell>
-          </TableRow>
+            </Box>
 
-          <TableRow>
-            <TableCell align="left">
-              <Typography>Max unavailable:</Typography>
-            </TableCell>
-            <TableCell align="left">
+            {/* Max Unavailable */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
+                Max unavailable:
+              </Typography>
               <TextField
                 size="small"
                 type="number"
                 onChange={(e) => handleMaxUnavailable(parseInt(e.target.value))}
                 value={maxUnavailable}
+                sx={{ flex: 1 }}
               />
-            </TableCell>
-          </TableRow>
+            </Box>
 
-          <TableRow>
-            <TableCell align="left">
+            {/* Private Endpoint */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <Tooltip title="Keep off if unsure">
-                <Typography>PSC cluster without private endpoint subnetwork?</Typography>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={privateEndpoint}
+                      onChange={(e) => setPrivateEndpoint(e.target.checked)}
+                    />
+                  }
+                  label={
+                    <Typography variant="body2">
+                      PSC cluster without private endpoint subnetwork?
+                    </Typography>
+                  }
+                />
               </Tooltip>
-            </TableCell>
-            <TableCell align="left">
-              <Checkbox
-                checked={privateEndpoint}
-                onChange={(e) => setPrivateEndpoint(e.target.checked)}
-              />
-            </TableCell>
-          </TableRow>
-
+            </Box>
+          </Stack>
         </Collapse>
-
-      </TableBody>
-    </Table>
+      </Stack>
+    </Box>
   );
 }
 
