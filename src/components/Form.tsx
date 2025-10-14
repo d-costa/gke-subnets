@@ -2,8 +2,6 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import {
   Box,
-  Card,
-  CardContent,
   Typography,
   Button,
   Collapse,
@@ -86,156 +84,154 @@ function Form() {
   }
 
   return (
-    <Card elevation={2} sx={{ maxWidth: 650, margin: '0 auto', mt: 2 }}>
-      <CardContent>
-        <Stack spacing={3}>
-          {/* Nodes */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
-              Nodes:
-            </Typography>
-            <TextField
-              size="small"
-              label="# nodes"
-              type="number"
-              onChange={(e) => handleSetNodes(parseInt(e.target.value))}
-              value={nodes}
-              autoFocus={true}
-              sx={{ flex: 1 }}
-            />
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                minWidth: 60, 
-                fontWeight: 600,
-                color: 'primary.main'
-              }}
-            >
-              /{getNodeSubnetSize(nodes)}
-            </Typography>
-          </Box>
+    <Box sx={{ maxWidth: 650, margin: '0 auto', mt: 2 }}>
+      <Stack spacing={3}>
+        {/* Nodes */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
+            Nodes:
+          </Typography>
+          <TextField
+            size="small"
+            label="# nodes"
+            type="number"
+            onChange={(e) => handleSetNodes(parseInt(e.target.value))}
+            value={nodes}
+            autoFocus={true}
+            sx={{ flex: 1 }}
+          />
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              minWidth: 60, 
+              fontWeight: 600,
+              color: 'primary.main'
+            }}
+          >
+            /{getNodeSubnetSize(nodes)}
+          </Typography>
+        </Box>
 
-          {/* Pods per Node */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
-              Pods per Node:
-            </Typography>
-            <TextField
-              size="small"
-              label="# pods per node"
-              type="number"
-              onChange={(e) => setPodsPerNode(parseInt(e.target.value))}
-              value={podsPerNode}
-              sx={{ flex: 1 }}
-            />
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                minWidth: 60, 
-                fontWeight: 600,
-                color: 'primary.main'
-              }}
-            >
-              /{getPodsSubnetSize(nodes, podsPerNode)}
-            </Typography>
-          </Box>
+        {/* Pods per Node */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
+            Pods per Node:
+          </Typography>
+          <TextField
+            size="small"
+            label="# pods per node"
+            type="number"
+            onChange={(e) => setPodsPerNode(parseInt(e.target.value))}
+            value={podsPerNode}
+            sx={{ flex: 1 }}
+          />
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              minWidth: 60, 
+              fontWeight: 600,
+              color: 'primary.main'
+            }}
+          >
+            /{getPodsSubnetSize(nodes, podsPerNode)}
+          </Typography>
+        </Box>
 
-          {/* Services */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
-              Services:
-            </Typography>
-            <TextField
-              size="small"
-              label="# services"
-              type="number"
-              onChange={(e) => setServices(parseInt(e.target.value))}
-              value={services}
-              sx={{ flex: 1 }}
-            />
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                minWidth: 60, 
-                fontWeight: 600,
-                color: 'primary.main'
-              }}
-            >
-              /{getServicesSubnetSize(services)}
-            </Typography>
-          </Box>
+        {/* Services */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
+            Services:
+          </Typography>
+          <TextField
+            size="small"
+            label="# services"
+            type="number"
+            onChange={(e) => setServices(parseInt(e.target.value))}
+            value={services}
+            sx={{ flex: 1 }}
+          />
+          <Typography 
+            variant="h6" 
+            sx={{ 
+              minWidth: 60, 
+              fontWeight: 600,
+              color: 'primary.main'
+            }}
+          >
+            /{getServicesSubnetSize(services)}
+          </Typography>
+        </Box>
 
-          <Divider />
+        <Divider />
 
-          {/* Advanced Options Toggle */}
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Button 
-              onClick={() => setShowAdvanced(!showAdvanced)}
-              endIcon={showAdvanced ? <ExpandLess /> : <ExpandMore />}
-              variant="outlined"
-            >
-              {showAdvanced ? "Hide Advanced Options" : "Show Advanced Options"}
-            </Button>
-          </Box>
+        {/* Advanced Options Toggle */}
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Button 
+            onClick={() => setShowAdvanced(!showAdvanced)}
+            endIcon={showAdvanced ? <ExpandLess /> : <ExpandMore />}
+            variant="outlined"
+          >
+            {showAdvanced ? "Hide Advanced Options" : "Show Advanced Options"}
+          </Button>
+        </Box>
 
-          {/* Advanced Options */}
-          <Collapse in={showAdvanced}>
-            <Stack spacing={3} sx={{ pt: 2 }}>
-              <Divider />
-              
-              {/* Max Surge */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Tooltip title="Additional node IPs will be required to scale up. Increasing unavailable will cancel some of these off">
-                  <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
-                    Max surge:
-                  </Typography>
-                </Tooltip>
-                <TextField
-                  size="small"
-                  type="number"
-                  onChange={(e) => handleMaxSurge(parseInt(e.target.value))}
-                  value={maxSurge}
-                  sx={{ flex: 1 }}
-                />
-              </Box>
-
-              {/* Max Unavailable */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        {/* Advanced Options */}
+        <Collapse in={showAdvanced}>
+          <Stack spacing={3} sx={{ pt: 2 }}>
+            <Divider />
+            
+            {/* Max Surge */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Tooltip title="Additional node IPs will be required to scale up. Increasing unavailable will cancel some of these off">
                 <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
-                  Max unavailable:
+                  Max surge:
                 </Typography>
-                <TextField
-                  size="small"
-                  type="number"
-                  onChange={(e) => handleMaxUnavailable(parseInt(e.target.value))}
-                  value={maxUnavailable}
-                  sx={{ flex: 1 }}
-                />
-              </Box>
+              </Tooltip>
+              <TextField
+                size="small"
+                type="number"
+                onChange={(e) => handleMaxSurge(parseInt(e.target.value))}
+                value={maxSurge}
+                sx={{ flex: 1 }}
+              />
+            </Box>
 
-              {/* Private Endpoint */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Tooltip title="Keep off if unsure">
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={privateEndpoint}
-                        onChange={(e) => setPrivateEndpoint(e.target.checked)}
-                      />
-                    }
-                    label={
-                      <Typography variant="body2">
-                        PSC cluster without private endpoint subnetwork?
-                      </Typography>
-                    }
-                  />
-                </Tooltip>
-              </Box>
-            </Stack>
-          </Collapse>
-        </Stack>
-      </CardContent>
-    </Card>
+            {/* Max Unavailable */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Typography variant="body1" sx={{ minWidth: 140, fontWeight: 500 }}>
+                Max unavailable:
+              </Typography>
+              <TextField
+                size="small"
+                type="number"
+                onChange={(e) => handleMaxUnavailable(parseInt(e.target.value))}
+                value={maxUnavailable}
+                sx={{ flex: 1 }}
+              />
+            </Box>
+
+            {/* Private Endpoint */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Tooltip title="Keep off if unsure">
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={privateEndpoint}
+                      onChange={(e) => setPrivateEndpoint(e.target.checked)}
+                    />
+                  }
+                  label={
+                    <Typography variant="body2">
+                      PSC cluster without private endpoint subnetwork?
+                    </Typography>
+                  }
+                />
+              </Tooltip>
+            </Box>
+          </Stack>
+        </Collapse>
+      </Stack>
+    </Box>
   );
 }
 
